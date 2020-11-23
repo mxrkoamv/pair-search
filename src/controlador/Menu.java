@@ -5,55 +5,57 @@
  */
 package controlador;
 
-import javafx.application.Application;;
+import javafx.application.Application;
+;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import modelo.Partida;
 
 /**
  *
  * @author Marco
  */
+
+
 public class Menu extends Application {
- 
+    private final int TAMANIO_EN_X = 520;
+    private final int TAMANIO_EN_Y = 600;
+
     Scene menu, juego;
-        
+
     @Override
-    public void start(Stage primaryStage) {     
-        Label label1 = new Label("MENU");
+    public void start(Stage primaryStage) {
+        Label titulo = new Label("Menú");
         Button botonFacil = new Button("Fácil");
         Button botonMedio = new Button("Medio");
-                       
-        botonFacil.setOnAction((e) -> {                    
+
+        Partida pardita = Partida.getInstace();
+        EmpezarJuego ini = new EmpezarJuego();
+
+        botonFacil.setOnAction((e) -> {
+            pardita.setTiempo(11);
+            juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);
             primaryStage.setScene(juego);
         });
-        botonMedio.setOnAction((e) -> {                        
+        botonMedio.setOnAction((e) -> {
+            pardita.setTiempo(60);
+            juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);             
             primaryStage.setScene(juego);
         });
-        
-        VBox layout1 = new VBox(50);
-        layout1.getChildren().addAll(label1, botonFacil, botonMedio);
-        menu = new Scene(layout1, 600, 600);
-       
-        
-        Button boton2 = new Button("xddd");
-        boton2.setOnAction(e -> primaryStage.setScene(menu));
-        
-        StackPane layout2 = new StackPane();
-        layout2.getChildren().add(boton2);
-        EmpezarJuego ini = new EmpezarJuego();        
-        juego = new Scene(ini.crearContenido(), 600, 600);
-        
+
+        VBox layout = new VBox(50);
+        layout.getChildren().addAll(titulo, botonFacil, botonMedio);
+        menu = new Scene(layout, TAMANIO_EN_X, 600);
+
         primaryStage.setScene(menu);
         primaryStage.show();
     }
- 
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         launch(args);
     }
-    
-}
 
+}

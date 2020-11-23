@@ -6,7 +6,8 @@
 package modelo;
 
 /**
- *
+ * Esta clase es la encargada de persistir inforamción de la partida, esta
+ * creada con el patrón singleton ya que solo debe haber una instancía de ella.
  * @author Marco
  */
 public class Partida {
@@ -14,6 +15,7 @@ public class Partida {
     private static Partida juego;
     private Tarjeta tarjetaSeleccionada;
     private int contadorDeClicks = 2;
+    int tiempo;
     
     private Partida() { }
 
@@ -40,5 +42,14 @@ public class Partida {
         this.contadorDeClicks = contadorDeClicks;
     }
 
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+    
+    
     
 }

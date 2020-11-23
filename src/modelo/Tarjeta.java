@@ -16,17 +16,18 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
- *
+ * Esta clase se encarga de crear una tarjeta con todas sus propiedades.
  * @author Marco
  */
 public class Tarjeta extends StackPane {
     private final Text text = new Text();
     
+    // Se instancia la clase para acceder a los valores guardados.
     Partida partida = Partida.getInstace();    
 
-    public Tarjeta(NumeroOrdinal value) {       
-        
-        Rectangle border = new Rectangle(150, 150);
+    // Constructor de la clase.
+    public Tarjeta(NumeroOrdinal value) {               
+        Rectangle border = new Rectangle(100, 100);
         border.setFill(null);
         border.setStroke(Color.BLACK);
         text.setText(value.getValue());
@@ -36,10 +37,10 @@ public class Tarjeta extends StackPane {
         setAlignment(Pos.CENTER);
         getChildren().addAll(border, text);
         setOnMouseClicked(this::handleMouseClick);
-        cerrar();
-        
+        cerrar();        
     }                
 
+    // Metodó para manejar evento click de cada tarjeta.
     public void handleMouseClick(MouseEvent event) {
         if (esAbierto() || partida.getContadorDeClicks() == 0) {                
             return;
@@ -47,8 +48,7 @@ public class Tarjeta extends StackPane {
         
         partida.setContadorDeClicks(partida.getContadorDeClicks() - 1);
         
-        if (partida.getTarjetaSeleccionada() == null) {                
-            
+        if (partida.getTarjetaSeleccionada() == null) {                            
             partida.setTarjetaSeleccionada(this);
             abrir(() -> {});
         } else {
@@ -63,10 +63,12 @@ public class Tarjeta extends StackPane {
         }
     }
 
+    // Meotodó para manejar el estado de opacidad de una tarjeta.
     public boolean esAbierto() {
         return text.getOpacity() == 1;
     }
 
+    // Metodó para abir una tarjeta.
     public void abrir(Runnable action) {
         FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
         ft.setToValue(1);
@@ -74,12 +76,14 @@ public class Tarjeta extends StackPane {
         ft.play();
     }
 
+    // Metodó para cerrar una tarjeta.
     public void cerrar() {
         FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
         ft.setToValue(0);
         ft.play();
     }
 
+    // Metodó para verificar que los ID's de las tarjetas coincidan con el fin de que se activen.
     public boolean tieneElMismoValor(Tarjeta other) {
         return text.getId().equals(other.text.getId());
     }
