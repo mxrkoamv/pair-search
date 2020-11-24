@@ -30,7 +30,7 @@ public class PartidaTest {
     // public void hello() {}
     
    @Test
-   public void ParditaTest() {       
+   public void testPartida() {       
        Partida primerInstancia = Partida.getInstace();
        Partida segundaInstancia = Partida.getInstace();
        assertEquals(true, primerInstancia == segundaInstancia);
