@@ -8,19 +8,40 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modelo.NumeroOrdinal;
-import modelo.Tarjeta;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import modelo.Partida;
+
+/**
+ *
+ * @authors 
+ * Sebastián Rodríguez
+ * Saul Bohorquez
+ * Giovanny Sandova
+ * Juan Antonio Peleiz
+ * Marco Antonio Marin
+ */
 
 public class EmpezarJuego extends Application {
 
     private static final int CANTIDAD_TARJETAS_POR_COLUMNA = 5;
     int contadorDeTiempo;
+    
+    private Tarjeta tarjetaSeleccionada = null;
+    private int contadorDeClicks = 2;
 
     Timer timer = new Timer();
     GridPane root = new GridPane();        
@@ -31,8 +52,8 @@ public class EmpezarJuego extends Application {
         titulo.setPadding(new Insets(-150, 0, 0, 0));        
         root.getChildren().add(titulo);            
         
-        Partida pardita = Partida.getInstace();
-        contadorDeTiempo = pardita.getTiempo();
+        Partida partida = Partida.getInstace();
+        contadorDeTiempo = partida.getTiempo();
         timer.scheduleAtFixedRate(this.timerTask, 0, 1000);
 
         List<Tarjeta> tarjetas = new ArrayList<>();
@@ -59,7 +80,6 @@ public class EmpezarJuego extends Application {
         vectorDeNumerosOrdinales[18] = new NumeroOrdinal("10", "Tenth");
         vectorDeNumerosOrdinales[19] = new NumeroOrdinal("10", "Decimo");
         
-
         for (NumeroOrdinal vectorDeNumerosOrdinale : vectorDeNumerosOrdinales) {
             tarjetas.add(new Tarjeta(vectorDeNumerosOrdinale));
         }
@@ -74,7 +94,80 @@ public class EmpezarJuego extends Application {
         }
         return root;
     }
+    
+    
+    private class Tarjeta extends StackPane {
+        private final Text text = new Text();
+
+        // Se instancia la clase para acceder a los valores guardados.
+        Partida partida = Partida.getInstace();    
+
+        // Constructor de la clase.
+        private Tarjeta(NumeroOrdinal value) {               
+            Rectangle border = new Rectangle(100, 100);
+            border.setFill(null);
+            border.setStroke(Color.BLACK);
+            text.setText(value.getValue());
+            text.setId(value.getId());
+            text.setFont(Font.font(20));
+
+            setAlignment(Pos.CENTER);
+            getChildren().addAll(border, text);
+            setOnMouseClicked(this::handleMouseClick);
+            cerrar();        
+        }                
+
+        // Metodó para manejar evento click de cada tarjeta.
+        public void handleMouseClick(MouseEvent event) {
+            if (esAbierto() || contadorDeClicks == 0) {                
+                return;
+            }        
+
+            contadorDeClicks--;
+
+            if (tarjetaSeleccionada == null) {                            
+                tarjetaSeleccionada = this;
+                abrir(() -> {});
+            } else {
+                abrir(() -> {                                        
+                    if (!tieneElMismoValor(tarjetaSeleccionada)) {
+                        tarjetaSeleccionada.cerrar();
+                        this.cerrar();
+                    }
+                    tarjetaSeleccionada = null;
+                    contadorDeClicks = 2;                
+                });
+            }
+        }
+
+        // Meotodó para manejar el estado de opacidad de una tarjeta.
+        public boolean esAbierto() {
+            return text.getOpacity() == 1;
+        }
+
+        // Metodó para abir una tarjeta.
+        public void abrir(Runnable action) {
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            ft.setToValue(1);
+            ft.setOnFinished(e -> action.run());
+            ft.play();
+        }
+
+        // Metodó para cerrar una tarjeta.
+        public void cerrar() {
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            ft.setToValue(0);
+            ft.play();
+        }
+
+        // Metodó para verificar que los ID's de las tarjetas coincidan con el fin de que se activen.
+        public boolean tieneElMismoValor(Tarjeta other) {
+            return text.getId().equals(other.text.getId());
+        }
+
+    }
         
+    // Metodó para manejar contador
     TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {

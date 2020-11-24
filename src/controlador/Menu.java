@@ -16,9 +16,13 @@ import modelo.Partida;
 
 /**
  *
- * @author Marco
+ * @authors 
+ * Sebastián Rodríguez
+ * Saul Bohorquez
+ * Giovanny Sandova
+ * Juan Antonio Peleiz
+ * Marco Antonio Marin
  */
-
 
 public class Menu extends Application {
     private final int TAMANIO_EN_X = 520;
@@ -32,16 +36,16 @@ public class Menu extends Application {
         Button botonFacil = new Button("Fácil");
         Button botonMedio = new Button("Medio");
 
-        Partida pardita = Partida.getInstace();
+        Partida partida = Partida.getInstace();
         EmpezarJuego ini = new EmpezarJuego();
 
         botonFacil.setOnAction((e) -> {
-            pardita.setTiempo(11);
+            partida.setTiempo(11);
             juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);
             primaryStage.setScene(juego);
         });
         botonMedio.setOnAction((e) -> {
-            pardita.setTiempo(60);
+            partida.setTiempo(60);
             juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);             
             primaryStage.setScene(juego);
         });
