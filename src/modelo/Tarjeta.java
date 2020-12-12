@@ -56,6 +56,8 @@ public class Tarjeta extends StackPane {
                 if (!tieneElMismoValor(partida.getTarjetaSeleccionada())) {
                     partida.getTarjetaSeleccionada().cerrar();
                     this.cerrar();
+                } else {
+                    partida.setCurrentCorrects(partida.getCurrentCorrects() + 1);
                 }
                 partida.setTarjetaSeleccionada(null);
                 partida.setContadorDeClicks(2);                

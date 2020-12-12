@@ -17,7 +17,8 @@ public class Partida {
     private int contadorDeClicks = 2;
     int tiempo;
     private int nivel;
-    
+    private int currentCorrects = 0;
+
     private Partida() { }
 
     public static Partida getInstace() {
@@ -57,5 +58,17 @@ public class Partida {
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    public int getCurrentCorrects() {
+        return currentCorrects;
+    }
+
+    public void setCurrentCorrects(int currentCorrects) {
+        this.currentCorrects = currentCorrects;
+    }
+
+    public boolean getIfAllTurned() {
+        return this.currentCorrects == 2;
     }
 }

@@ -44,7 +44,7 @@ public class Menu extends Application {
         botonMedio.setOnAction((e) -> {
             partida.setTiempo(60);
             partida.setNivel(1);
-            juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);             
+            juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);
             primaryStage.setScene(juego);
         });
         botonDificil.setOnAction((e) -> {
