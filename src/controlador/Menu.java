@@ -16,9 +16,13 @@ import modelo.Partida;
 
 /**
  *
- * @author Marco
+ * @authors 
+ * Sebastián Rodríguez
+ * Saul Bohorquez
+ * Giovanny Sandova
+ * Juan Antonio Peleiz
+ * Marco Antonio Marin
  */
-
 
 public class Menu extends Application {
     private final int TAMANIO_EN_X = 520;

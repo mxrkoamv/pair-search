@@ -8,13 +8,17 @@ package modelo;
 /**
  * Esta clase es la encargada de persistir inforamción de la partida, esta
  * creada con el patrón singleton ya que solo debe haber una instancía de ella.
- * @author Marco
+ * @authors 
+ * Sebastián Rodríguez
+ * Saul Bohorquez
+ * Giovanny Sandova
+ * Juan Antonio Peleiz
+ * Marco Antonio Marin
  */
+
 public class Partida {
     
-    private static Partida juego;
-    private Tarjeta tarjetaSeleccionada;
-    private int contadorDeClicks = 2;
+    private static Partida juego;    
     int tiempo;
     private int nivel;
     private int currentCorrects = 0;
@@ -26,22 +30,6 @@ public class Partida {
             juego = new Partida();
         }
         return juego;   
-    }
-
-    public Tarjeta getTarjetaSeleccionada() {
-        return tarjetaSeleccionada;
-    }
-
-    public void setTarjetaSeleccionada(Tarjeta tarjetaSeleccionada) {
-        this.tarjetaSeleccionada = tarjetaSeleccionada;
-    }
-
-    public int getContadorDeClicks() {
-        return contadorDeClicks;
-    }
-
-    public void setContadorDeClicks(int contadorDeClicks) {
-        this.contadorDeClicks = contadorDeClicks;
     }
 
     public int getTiempo() {

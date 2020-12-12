@@ -7,8 +7,14 @@ package modelo;
 
 /**
  *
- * @author Marco
+ * @authors 
+ * Sebastián Rodríguez
+ * Saul Bohorquez
+ * Giovanny Sandova
+ * Juan Antonio Peleiz
+ * Marco Antonio Marin
  */
+
 public class NumeroOrdinal {
     String id;
     String value;
