@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import modelo.Partida;
 
-public class EmpezarJuego extends Application {
+public class EmpezarJuego {
 
     private static final int CANTIDAD_TARJETAS_POR_COLUMNA = 4;
     int contadorDeTiempo;
@@ -79,9 +79,11 @@ public class EmpezarJuego extends Application {
         }
     };
 
+    /*
     @Override
     public void start(Stage primaryStage) throws Exception {        
         primaryStage.setScene(new Scene(crearContenido()));
         primaryStage.show();
     }
+    */
 }

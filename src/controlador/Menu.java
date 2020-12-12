@@ -6,6 +6,7 @@
 package controlador;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -56,6 +57,7 @@ public class Menu extends Application {
 
         VBox layout = new VBox(50);
         layout.getChildren().addAll(titulo, botonFacil, botonMedio, botonDificil);
+        layout.setAlignment(Pos.CENTER);
         menu = new Scene(layout, TAMANIO_EN_X, 600);
 
         primaryStage.setScene(menu);
