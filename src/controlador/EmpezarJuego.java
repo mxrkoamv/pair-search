@@ -19,7 +19,7 @@ import modelo.Partida;
 
 public class EmpezarJuego extends Application {
 
-    private static final int CANTIDAD_TARJETAS_POR_COLUMNA = 5;
+    private static final int CANTIDAD_TARJETAS_POR_COLUMNA = 4;
     int contadorDeTiempo;
 
     Timer timer = new Timer();

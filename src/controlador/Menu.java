@@ -30,23 +30,32 @@ public class Menu extends Application {
         Label titulo = new Label("Menú");
         Button botonFacil = new Button("Fácil");
         Button botonMedio = new Button("Medio");
+        Button botonDificil = new Button("Difícil");
 
-        Partida pardita = Partida.getInstace();
+        Partida partida = Partida.getInstace();
         EmpezarJuego ini = new EmpezarJuego();
 
         botonFacil.setOnAction((e) -> {
-            pardita.setTiempo(11);
+            partida.setTiempo(120);
+            partida.setNivel(1);
             juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);
             primaryStage.setScene(juego);
         });
         botonMedio.setOnAction((e) -> {
-            pardita.setTiempo(60);
+            partida.setTiempo(60);
+            partida.setNivel(1);
             juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);             
+            primaryStage.setScene(juego);
+        });
+        botonDificil.setOnAction((e) -> {
+            partida.setTiempo(30);
+            partida.setNivel(1);
+            juego = new Scene(ini.crearContenido(), TAMANIO_EN_X, TAMANIO_EN_Y);
             primaryStage.setScene(juego);
         });
 
         VBox layout = new VBox(50);
-        layout.getChildren().addAll(titulo, botonFacil, botonMedio);
+        layout.getChildren().addAll(titulo, botonFacil, botonMedio, botonDificil);
         menu = new Scene(layout, TAMANIO_EN_X, 600);
 
         primaryStage.setScene(menu);

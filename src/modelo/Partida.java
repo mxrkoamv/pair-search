@@ -16,6 +16,7 @@ public class Partida {
     private Tarjeta tarjetaSeleccionada;
     private int contadorDeClicks = 2;
     int tiempo;
+    private int nivel;
     
     private Partida() { }
 
@@ -49,7 +50,12 @@ public class Partida {
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
-    
-    
-    
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
 }
