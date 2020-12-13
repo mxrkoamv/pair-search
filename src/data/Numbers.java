@@ -15,6 +15,9 @@ public class Numbers {
             case 2:
                 arrayNumberCollection = Numbers.twenty();
                 break;
+            case 3:
+                arrayNumberCollection = Numbers.thirty();
+                break;
             default:
                 arrayNumberCollection = Numbers.ten();
                 break;
@@ -28,7 +31,7 @@ public class Numbers {
             new NumeroOrdinal("1", "Primero"),
             new NumeroOrdinal("2", "Second"),
             new NumeroOrdinal("2", "Segundo"),
-            /*new NumeroOrdinal("3", "Third"),
+            new NumeroOrdinal("3", "Third"),
             new NumeroOrdinal("3", "Tercero"),
             new NumeroOrdinal("4", "Fourth"),
             new NumeroOrdinal("4", "Cuarto"),
@@ -43,7 +46,7 @@ public class Numbers {
             new NumeroOrdinal("9", "Ninth"),
             new NumeroOrdinal("9", "Noveno"),
             new NumeroOrdinal("10", "Tenth"),
-            new NumeroOrdinal("10", "Decimo")*/
+            new NumeroOrdinal("10", "Decimo")
         };
 
         return vectorOrdinales;
@@ -51,10 +54,53 @@ public class Numbers {
 
     public static NumeroOrdinal[] twenty() {
         NumeroOrdinal vectorOrdinales[] = {
-                new NumeroOrdinal("1", "Elven"),
-                new NumeroOrdinal("1", "Once"),
-                new NumeroOrdinal("2", "Twelve"),
-                new NumeroOrdinal("2", "Doce"),
+                new NumeroOrdinal("11", "Elven"),
+                new NumeroOrdinal("11", "Once"),
+                new NumeroOrdinal("12", "Twelve"),
+                new NumeroOrdinal("12", "Doce"),
+                new NumeroOrdinal("13", "Thirteen"),
+                new NumeroOrdinal("13", "Trece"),
+                new NumeroOrdinal("14", "Fourteen"),
+                new NumeroOrdinal("14", "Catorce"),
+                new NumeroOrdinal("15", "Fifteen"),
+                new NumeroOrdinal("15", "Quince"),
+                new NumeroOrdinal("16", "Sixteen"),
+                new NumeroOrdinal("16", "Dieciseis"),
+                new NumeroOrdinal("17", "Seventeen"),
+                new NumeroOrdinal("17", "Diecisiete"),
+                new NumeroOrdinal("18", "Eighteen"),
+                new NumeroOrdinal("18", "Dieciocho"),
+                new NumeroOrdinal("19", "Nineteen"),
+                new NumeroOrdinal("19", "Diecinueve"),
+                new NumeroOrdinal("20", "Twenty"),
+                new NumeroOrdinal("20", "Veinte"),
+        };
+
+        return vectorOrdinales;
+    }
+
+    public static NumeroOrdinal[] thirty() {
+        NumeroOrdinal vectorOrdinales[] = {
+                new NumeroOrdinal("21", "Twenty-one"),
+                new NumeroOrdinal("21", "Veintiuno"),
+                new NumeroOrdinal("22", "Twenty-two"),
+                new NumeroOrdinal("22", "Veintidos"),
+                new NumeroOrdinal("23", "Twenty-three"),
+                new NumeroOrdinal("23", "Veintitres"),
+                new NumeroOrdinal("24", "Twenty-four"),
+                new NumeroOrdinal("24", "Veinticuatro"),
+                new NumeroOrdinal("25", "Twenty-five"),
+                new NumeroOrdinal("25", "Veinticinco"),
+                new NumeroOrdinal("26", "Twenty-six"),
+                new NumeroOrdinal("26", "Veintiseis"),
+                new NumeroOrdinal("27", "Twenty-seven"),
+                new NumeroOrdinal("27", "Veintisiete"),
+                new NumeroOrdinal("28", "Twenty-eight"),
+                new NumeroOrdinal("28", "Veintiocho"),
+                new NumeroOrdinal("29", "Twenty-nine"),
+                new NumeroOrdinal("29", "Veintinueve"),
+                new NumeroOrdinal("30", "Thirty"),
+                new NumeroOrdinal("30", "Treita"),
         };
 
         return vectorOrdinales;
